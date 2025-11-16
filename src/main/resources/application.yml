@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: AppProdutos
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/appprodutos_db
+    username: postgres
+    password: admin
