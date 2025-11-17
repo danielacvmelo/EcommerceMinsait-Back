@@ -3,12 +3,15 @@ package br.com.fabreum.AppProdutos.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "tb_cart_items")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CartItem {
 
     @Id
