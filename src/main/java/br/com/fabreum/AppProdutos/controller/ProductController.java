@@ -6,6 +6,7 @@ import br.com.fabreum.AppProdutos.service.ProductService;
 import br.com.fabreum.AppProdutos.service.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,6 +65,7 @@ public class ProductController {
     }
 
     @PutMapping("update")
+//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Optional<Product>> updateProduct(@RequestBody Product product) {
         final var existingProduct = productService.updateProduct(product);
         return ResponseEntity.ok(existingProduct);
@@ -72,7 +74,7 @@ public class ProductController {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         //Exemplo construindo Record
-        final var p = new ProductDto(1L, "dfs", "sdfa", new BigDecimal("25.6"));
+        final var p = new ProductDto(1L, "dfs", "sdfa", new BigDecimal("25.6"), 10);
         //Exemplo construindo Builder do record
         final var p2 = ProductDto.builder()
                 .id(1L)
