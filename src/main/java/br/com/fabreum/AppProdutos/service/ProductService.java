@@ -18,12 +18,16 @@ public class ProductService {
     public Optional<Product> updateProduct(Product product) {
         log.info("Atualizando produto: {}", product);
         final var existingProduct = productRepository.findById(product.getId());
+
         existingProduct.ifPresent(p -> {
-            product.setBarcode(p.getBarcode());
-            product.setName(p.getName());
-            product.setPrice(p.getPrice());
-            productRepository.saveAndFlush(product);
+            p.setBarcode(product.getBarcode());
+            p.setName(product.getName());
+            p.setPrice(product.getPrice());
+            p.setStock(product.getStock());
+
+            productRepository.saveAndFlush(p);
         });
+
         return existingProduct;
     }
 

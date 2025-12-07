@@ -2,13 +2,29 @@ spring:
   application:
     name: AppProdutos
 
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/appprodutos_db
+    url: jdbc:postgresql://localhost:5433/appprodutos2_db
     username: postgres
     password: admin
+
+appprodutos:
+  security: {}
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
